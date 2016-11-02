@@ -13,7 +13,6 @@ namespace DeenGames.AdventureRL
 {
     class Program
     {
-        private const int StatusConsoleWidth = 24;
         private const int MessageConsoleHeight = 6;
         private const int GameWidth = 80;
         private const int GameHeight = 25;
@@ -39,16 +38,13 @@ namespace DeenGames.AdventureRL
             SadConsole.Engine.ConsoleRenderStack.Clear();
             SadConsole.Engine.ActiveConsole = null;
 
-            var viewConsole = new BorderedConsole(GameWidth - StatusConsoleWidth, GameHeight - MessageConsoleHeight);
-            var statusConsole = new BorderedConsole(StatusConsoleWidth, GameHeight - MessageConsoleHeight, "Status");
+            var viewConsole = new BorderedConsole(GameWidth, GameHeight - MessageConsoleHeight);
             var messageConsole = new BorderedConsole(GameWidth, MessageConsoleHeight, "Messages");
 
             viewConsole.Position = new Point(0, 0);
-            statusConsole.Position = new Point(viewConsole.Width, 0);
             messageConsole.Position = new Point(0, viewConsole.Height);
 
             SadConsole.Engine.ConsoleRenderStack.Add(viewConsole);
-            SadConsole.Engine.ConsoleRenderStack.Add(statusConsole);
             SadConsole.Engine.ConsoleRenderStack.Add(messageConsole);
         }
 
