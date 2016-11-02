@@ -64,6 +64,7 @@
     <Content Include="Yayo_c64.png" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consoles\BorderedConsole.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
