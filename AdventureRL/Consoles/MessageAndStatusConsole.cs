@@ -16,6 +16,7 @@ namespace DeenGames.AdventureRL.Consoles
 
         public MessageAndStatusConsole() : base(Config.GameWidth, MyHeight)
         {
+            this.CanUseKeyboard = false;
         }
 
         public void ShowMessage(string text)

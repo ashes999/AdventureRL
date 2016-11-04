@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Console = SadConsole.Consoles.Console;
+using SadConsole.Input;
 
 namespace DeenGames.AdventureRL.Screens
 {
@@ -22,8 +23,7 @@ namespace DeenGames.AdventureRL.Screens
         {
             // Clear the default console
             SadConsole.Engine.ConsoleRenderStack.Clear();
-            SadConsole.Engine.ActiveConsole = null;
-
+            
             messageAndStatusConsole = new MessageAndStatusConsole();
             mainView = new AreaViewConsole(Config.GameWidth, Config.GameHeight - messageAndStatusConsole.Height, 999, 999);
 

@@ -31,8 +31,11 @@ namespace DeenGames.AdventureRL
 
         private static void Engine_EngineStart(object sender, EventArgs e)
         {
-            SadConsole.Engine.ConsoleRenderStack.Add(new AreaScreen());
+            // Clear the default console
+            SadConsole.Engine.ConsoleRenderStack.Clear();
             SadConsole.Engine.ActiveConsole = null;
+
+            SadConsole.Engine.ConsoleRenderStack.Add(new AreaScreen());
         }
 
         private static void Engine_EngineUpdated(object sender, EventArgs e)
