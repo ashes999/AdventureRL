@@ -54,6 +54,10 @@
       <HintPath>..\packages\SadConsole.Core.5.0.8\lib\net45\SadConsole.Core.Windows.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SadConsole.GameHelpers.Windows, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SadConsole.GameHelpers.4.4.0\lib\net45\SadConsole.GameHelpers.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -64,8 +68,12 @@
     <Content Include="Yayo_c64.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consoles\BorderedConsole.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Consoles\AreaViewConsole.cs" />
+    <Compile Include="Consoles\MessageAndStatusConsole.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="SadConsoleHelpers\Extensions\GameObjectExtensions.cs" />
+    <Compile Include="Screens\AreaScreen.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

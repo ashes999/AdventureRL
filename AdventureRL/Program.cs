@@ -8,19 +8,16 @@ using System;
 using Console = SadConsole.Consoles.Console;
 using DeenGames.AdventureRL.Consoles;
 using Microsoft.Xna.Framework;
+using DeenGames.AdventureRL.Screens;
 
 namespace DeenGames.AdventureRL
 {
     class Program
     {
-        private const int MessageConsoleHeight = 6;
-        private const int GameWidth = 80;
-        private const int GameHeight = 25;
-
         static void Main(string[] args)
         {
             // Setup the engine and creat the main window.
-            SadConsole.Engine.Initialize("IBM.font", GameWidth, GameHeight);
+            SadConsole.Engine.Initialize("IBM.font", Config.GameWidth, Config.GameHeight);
 
             // Hook the start event so we can add consoles to the system.
             SadConsole.Engine.EngineStart += Engine_EngineStart;
@@ -34,18 +31,8 @@ namespace DeenGames.AdventureRL
 
         private static void Engine_EngineStart(object sender, EventArgs e)
         {
-            // Clear the default console
-            SadConsole.Engine.ConsoleRenderStack.Clear();
+            SadConsole.Engine.ConsoleRenderStack.Add(new AreaScreen());
             SadConsole.Engine.ActiveConsole = null;
-
-            var viewConsole = new BorderedConsole(GameWidth, GameHeight - MessageConsoleHeight);
-            var messageConsole = new BorderedConsole(GameWidth, MessageConsoleHeight, "Messages");
-
-            viewConsole.Position = new Point(0, 0);
-            messageConsole.Position = new Point(0, viewConsole.Height);
-
-            SadConsole.Engine.ConsoleRenderStack.Add(viewConsole);
-            SadConsole.Engine.ConsoleRenderStack.Add(messageConsole);
         }
 
         private static void Engine_EngineUpdated(object sender, EventArgs e)
