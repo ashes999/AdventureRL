@@ -62,9 +62,25 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
             return false;
         }
 
-        private void MovePlayerBy(Point point)
+        private void MovePlayerBy(Point amount)
         {
-            this.playerEntity.Position += point;
+            // Get the position the player will be at
+            Point newPosition = playerEntity.Position + amount;
+
+            // Check to see if the position is within the map
+            if (new Rectangle(1, 1, Width - 2, Height - 2).Contains(newPosition))
+            {
+                // Move the player
+                playerEntity.Position += amount;
+
+                // Scroll the view area to center the player on the screen
+                TextSurface.RenderArea = new Rectangle(playerEntity.Position.X - (TextSurface.RenderArea.Width / 2),
+                    playerEntity.Position.Y - (TextSurface.RenderArea.Height / 2),
+                    TextSurface.RenderArea.Width, TextSurface.RenderArea.Height);
+
+                // If he view area moved, we'll keep our entity in sync with it.
+                playerEntity.RenderOffset = this.Position - TextSurface.RenderArea.Location;
+            }
         }
 
         private void GenerateMap()
