@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Console = SadConsole.Consoles.Console;
-using DeenGames.AdventureRL.Consoles;
 using Microsoft.Xna.Framework;
-using DeenGames.AdventureRL.Screens;
+using DeenGames.AdventureRL.UI.SadConsoleMonogame.Screens;
 
-namespace DeenGames.AdventureRL
+namespace DeenGames.AdventureRL.UI.SadConsoleMonogame
 {
     class Program
     {

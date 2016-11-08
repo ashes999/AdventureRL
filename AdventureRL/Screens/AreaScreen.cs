@@ -1,5 +1,4 @@
-﻿using DeenGames.AdventureRL.Consoles;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using SadConsole.Consoles;
 using System;
 using System.Collections.Generic;
@@ -8,8 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Console = SadConsole.Consoles.Console;
 using SadConsole.Input;
+using DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles;
 
-namespace DeenGames.AdventureRL.Screens
+namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Screens
 {
     /// <summary>
     /// An area, like a dungeon floor, town, or an outdoor place with enemies/NPCs

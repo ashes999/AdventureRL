@@ -7,7 +7,7 @@
     <ProjectGuid>{5CFF1142-30F5-4968-BA8A-71AD517B949B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeenGames.AdventureRL</RootNamespace>
+    <RootNamespace>DeenGames.AdventureRL.UI.SadConsoleMonogame</RootNamespace>
     <AssemblyName>AdventureRL</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>DeenGames.AdventureRL.Program</StartupObject>
+    <StartupObject>DeenGames.AdventureRL.UI.SadConsoleMonogame.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />

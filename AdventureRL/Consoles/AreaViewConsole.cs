@@ -2,10 +2,10 @@
 using Microsoft.Xna.Framework;
 using SadConsole.Game;
 using SadConsole;
-using DeenGames.AdventureRL.SadConsoleHelpers.Extensions;
 using SadConsole.Input;
+using DeenGames.AdventureRL.UI.SadConsoleMonogame.SadConsoleHelpers.Extensions;
 
-namespace DeenGames.AdventureRL.Consoles
+namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
 {
     class AreaViewConsole : SadConsole.Consoles.Console
     {

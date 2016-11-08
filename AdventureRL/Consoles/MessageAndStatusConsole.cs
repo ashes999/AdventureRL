@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeenGames.AdventureRL.Consoles
+namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
 {
     /// <summary>
     /// Shows game messages to the player (eg. who attacked who). Also shows health.

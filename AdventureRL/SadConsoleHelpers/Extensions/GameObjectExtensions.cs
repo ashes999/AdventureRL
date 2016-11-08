@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeenGames.AdventureRL.SadConsoleHelpers.Extensions
+namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.SadConsoleHelpers.Extensions
 {
     static class GameObjectExtensions
     {

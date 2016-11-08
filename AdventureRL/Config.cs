@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeenGames.AdventureRL
+namespace DeenGames.AdventureRL.UI.SadConsoleMonogame
 {
     /// <summary>
     /// Gets global configuration. Yes, it's evil, because it's used everywhere.
