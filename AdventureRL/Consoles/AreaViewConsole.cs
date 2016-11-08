@@ -12,7 +12,7 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
     {
         public GameObject playerEntity { get; private set; }
 
-        public AreaViewConsole(int width, int height, int mapWidth, int mapHeight) : base(width, height)
+        public AreaViewConsole(int width, int height, int mapWidth, int mapHeight) : base(mapWidth, mapHeight)
         {
             this.TextSurface.RenderArea = new Rectangle(0, 0, width, height);
             this.playerEntity = new GameObject(Engine.DefaultFont);
@@ -91,13 +91,22 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
             {
                 for (int j = 0; j < this.Height; j++)
                 {
+                    var index = i + (j * this.Width);
+
                     if (i == 0 || j == 0 || i == this.Width - 1 || j == this.Height - 1)
                     {
-                        this[i + (j * this.Width)].GlyphIndex = '#';
+                        this[index].GlyphIndex = '#';
                     }
                     else
                     {
-                        this[i + (j * this.Width)].GlyphIndex = '.';
+                        if (random.Next(100) <= 1)
+                        {
+                            this[index].GlyphIndex = '~';
+                        }
+                        else
+                        {
+                            this[index].GlyphIndex = '.';
+                        }
                     }
                 }
             }

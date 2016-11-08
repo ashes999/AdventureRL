@@ -25,7 +25,7 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Screens
             SadConsole.Engine.ConsoleRenderStack.Clear();
             
             messageAndStatusConsole = new MessageAndStatusConsole();
-            mainView = new AreaViewConsole(Config.GameWidth, Config.GameHeight - messageAndStatusConsole.Height, 999, 999);
+            mainView = new AreaViewConsole(Config.GameWidth, Config.GameHeight - messageAndStatusConsole.Height, Config.GameWidth * 2, Config.GameHeight * 2);
 
             mainView.Position = new Point(0, 0);
             messageAndStatusConsole.Position = new Point(0, mainView.Height);
