@@ -45,6 +45,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="RogueSharp, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RogueSharp.3.0.0\lib\portable-net40+sl50+win+wpa81+wp80\RogueSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\MonoGame.Framework.dll</HintPath>
@@ -76,6 +80,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Yayo_c64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdventureRL.Core\AdventureRL.Core.csproj">
+      <Project>{c24bc693-7df4-41a8-99a2-b8d67dc47986}</Project>
+      <Name>AdventureRL.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
