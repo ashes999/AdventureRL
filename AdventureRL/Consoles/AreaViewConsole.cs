@@ -12,7 +12,6 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
     class AreaViewConsole : SadConsole.Consoles.Console
     {
         public GameObject playerEntity { get; private set; }
-        private CellAppearance[,] mapData;
         private DungeonFloorMap currentMap;
 
         public AreaViewConsole(int width, int height, int mapWidth, int mapHeight) : base(mapWidth, mapHeight)
@@ -105,20 +104,8 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
                 }
             }
 
-            // TODO: dependency to inject
-            var  random = new RogueSharp.Random.DotNetRandom();
-
-            // Position the player somewhere on a walkable square
-            int x = random.Next(this.Width);
-            int y = random.Next(this.Height);
-
-            while (!(currentMap.IsWalkable(x, y)))
-            {
-                x = random.Next(this.Width);
-                y = random.Next(this.Height);
-                playerEntity.Position = new Point(x, y);
-            }
-
+            var start = currentMap.GetPlayerStartingPosition();
+            playerEntity.Position = new Point(start.X, start.Y);
             this.CenterViewToPlayer();
         }
 
