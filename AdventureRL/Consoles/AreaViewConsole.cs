@@ -5,7 +5,6 @@ using SadConsole;
 using SadConsole.Input;
 using DeenGames.AdventureRL.UI.SadConsoleMonogame.SadConsoleHelpers.Extensions;
 using Microsoft.Xna.Framework.Input;
-using DeenGames.AdventureRL.UI.SadConsoleMonogame.View;
 
 namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
 {
@@ -104,15 +103,12 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
                 if (cell.IsWalkable)
                 {
                     // Our local information about each map square
-                    var floor = new Floor();
-
                     // Copy the appearance we've defined for Floor or Wall or whatever, to the actual console data that is rendered
-                    floor.CopyAppearanceTo(this[cell.X, cell.Y]);
+                    this.CreateFloor().CopyAppearanceTo(this[cell.X, cell.Y]);
                 }
                 else
                 {
-                    var wall = new Wall();
-                    wall.CopyAppearanceTo(this[cell.X, cell.Y]);
+                    this.CreateWall().CopyAppearanceTo(this[cell.X, cell.Y]);
                 }
             }
 
@@ -131,6 +127,16 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
             }
 
             this.CenterViewToPlayer();
+        }
+
+        private CellAppearance CreateFloor()
+        {
+            return new CellAppearance(Color.DarkGray, Color.Transparent, '.');
+        }
+
+        private CellAppearance CreateWall()
+        {
+            return new CellAppearance(Color.White, Color.Transparent, '#');
         }
     }
 }
