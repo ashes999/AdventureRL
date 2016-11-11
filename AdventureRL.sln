@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureRL", "AdventureRL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureRL.Core", "AdventureRL.Core\AdventureRL.Core.csproj", "{C24BC693-7DF4-41A8-99A2-B8D67DC47986}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureRL.Core.UnitTests", "AdventureRL.Core.UnitTests\AdventureRL.Core.UnitTests.csproj", "{8B1F1803-EF32-4853-ADE1-23AE17EE979D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C24BC693-7DF4-41A8-99A2-B8D67DC47986}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C24BC693-7DF4-41A8-99A2-B8D67DC47986}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C24BC693-7DF4-41A8-99A2-B8D67DC47986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B1F1803-EF32-4853-ADE1-23AE17EE979D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B1F1803-EF32-4853-ADE1-23AE17EE979D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B1F1803-EF32-4853-ADE1-23AE17EE979D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B1F1803-EF32-4853-ADE1-23AE17EE979D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

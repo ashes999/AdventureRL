@@ -1,4 +1,6 @@
 ﻿using DeenGames.AdventureRL.UI.SadConsoleMonogame.Screens;
+using Ninject;
+using RogueSharp.Random;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,16 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame
 {
     class Game
     {
+        // Methodology: never use .Resolve. Let DI wire up objects.
+        internal static readonly IKernel Kernel = new StandardKernel();
+
+        public Game()
+        {
+            // TODO: read class name from config
+            // TODO: wiring up core classes shouldn't be done in the UI
+            Kernel.Bind<IRandom>().To<RogueSharp.Random.DotNetRandom>();
+        }
+
         public void Run()
         {
             // Setup the engine and creat the main window.

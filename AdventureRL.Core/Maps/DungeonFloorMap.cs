@@ -1,4 +1,5 @@
 ﻿using RogueSharp;
+using RogueSharp.Random;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,11 @@ namespace DeenGames.AdventureRL.Core.Maps
         private int width = 0;
         private int height = 0;
 
-        public DungeonFloorMap(int width, int height)
+        private IRandom random;
+
+        public DungeonFloorMap(IRandom random, int width, int height)
         {
+            this.random = random;
             this.width = width;
             this.height = height;
 
@@ -27,17 +31,14 @@ namespace DeenGames.AdventureRL.Core.Maps
         /// For now, it's just a random, walkable location.
         public Point GetPlayerStartingPosition()
         {
-            // TODO: dependency to inject
-            var random = new RogueSharp.Random.DotNetRandom();
-
             // Position the player somewhere on a walkable square
-            int x = random.Next(this.width);
-            int y = random.Next(this.height);
+            int x = this.random.Next(this.width);
+            int y = this.random.Next(this.height);
 
             while (!(tileData.IsWalkable(x, y)))
             {
-                x = random.Next(this.width);
-                y = random.Next(this.height);
+                x = this.random.Next(this.width);
+                y = this.random.Next(this.height);
             }
 
             return new Point(x, y);
