@@ -78,6 +78,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="SadConsoleHelpers\Extensions\GameObjectExtensions.cs" />
     <Compile Include="Screens\AreaScreen.cs" />
+    <Compile Include="ViewExtensions\SadConsoleCellExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Fonts\Cheepicus_12x12.png" />

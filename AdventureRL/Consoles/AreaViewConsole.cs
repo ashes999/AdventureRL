@@ -1,14 +1,16 @@
 ﻿using System;
+using DeenGames.AdventureRL.Core.Maps;
 using Microsoft.Xna.Framework;
+using SadConsole.Input;
+using SadConsole.Effects;
 using SadConsole.Game;
 using SadConsole;
-using SadConsole.Input;
 using DeenGames.AdventureRL.UI.SadConsoleMonogame.SadConsoleHelpers.Extensions;
 using Microsoft.Xna.Framework.Input;
-using DeenGames.AdventureRL.Core.Maps;
-using RogueSharp.Random;
-using Ninject;
+using System.Collections.Generic;
 using Ninject.Parameters;
+using Ninject;
+using DeenGames.AdventureRL.UI.SadConsoleMonogame.ViewExtensions;
 
 namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
 {
@@ -16,6 +18,12 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
     {
         public GameObject playerEntity { get; private set; }
         private DungeonFloorMap currentMap;
+
+        private ICellEffect DiscoveredEffect = new Recolor() { Foreground = Color.LightGray * 0.5f, Background = Color.Black, DoForeground = true, DoBackground = true, CloneOnApply = false };
+        private ICellEffect HiddenEffect = new Recolor() { Foreground = Color.Black, Background = Color.Black, DoForeground = true, DoBackground = true, CloneOnApply = false };
+        
+        // TODO: should be a model
+        public int PlayerLightRadius = 10;
 
         public AreaViewConsole(int width, int height, int mapWidth, int mapHeight) : base(mapWidth, mapHeight)
         {
@@ -30,6 +38,10 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
             SadConsole.Engine.Keyboard.InitialRepeatDelay = 0.1f;
 
             this.GenerateMap();
+
+            var currentFieldOfView = new RogueSharp.FieldOfView(this.currentMap.GetIMap());
+            var fovTiles = currentFieldOfView.ComputeFov(playerEntity.Position.X, playerEntity.Position.Y, PlayerLightRadius, true);
+            this.MarkCurrentFovAsVisible(fovTiles);
         }
 
         public override void Render()
@@ -69,8 +81,13 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
 
         private void MovePlayerBy(Point amount)
         {
+            var currentFieldOfView = new RogueSharp.FieldOfView(this.currentMap.GetIMap());
+            var fovTiles = currentFieldOfView.ComputeFov(playerEntity.Position.X, playerEntity.Position.Y, PlayerLightRadius, true);
+
+            this.MarkCurrentFovAsDiscovered(fovTiles);
+
             // Get the position the player will be at
-            Point newPosition = playerEntity.Position + amount;
+            Microsoft.Xna.Framework.Point newPosition = playerEntity.Position + amount;
 
             // Check to see if the position is within the map
             if (new Rectangle(0, 0, Width, Height).Contains(newPosition) && currentMap.IsWalkable(newPosition.X, newPosition.Y))
@@ -78,6 +95,31 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
                 // Move the player
                 playerEntity.Position += amount;
                 CenterViewToPlayer();
+            }
+
+            fovTiles = currentFieldOfView.ComputeFov(playerEntity.Position.X, playerEntity.Position.Y, PlayerLightRadius, true);
+            this.MarkCurrentFovAsVisible(fovTiles);
+        }
+
+        private void MarkCurrentFovAsVisible(IReadOnlyCollection<RogueSharp.Cell> fovTiles)
+        {
+            foreach (var cell in fovTiles)
+            {
+                var tile = this[cell.X, cell.Y];
+                tile.ClearEffect();
+            }
+        }
+
+        private void MarkCurrentFovAsDiscovered(IReadOnlyCollection<RogueSharp.Cell> fovTiles)
+        {
+            foreach (var cell in fovTiles)
+            {
+                // Tell the map data (for FOV calculations) that we've discovered thist ile
+                this.currentMap.MarkAsDiscovered(cell.X, cell.Y, cell.IsTransparent, cell.IsWalkable);
+
+                // Update view rendering to the appropriate effect
+                var tile = this[cell.X, cell.Y];
+                tile.ApplyEffect(DiscoveredEffect);
             }
         }
 
@@ -102,7 +144,9 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame.Consoles
             {
                 for (var i = 0; i < this.Width; i++)
                 {
-                    this.CreateCellFor(i, j).CopyAppearanceTo(this[i, j]);
+                    var tile = this[i, j];
+                    this.CreateCellFor(i, j).CopyAppearanceTo(tile);
+                    tile.ApplyEffect(HiddenEffect);
                 }
             }
 

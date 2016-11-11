@@ -49,5 +49,16 @@ namespace DeenGames.AdventureRL.Core.Maps
             // TODO: make sure there are no entities there, eg. player, monster
             return this.tileData.IsWalkable(x, y); 
         }
+
+        public IMap GetIMap()
+        {
+            return this.tileData;
+        }
+
+        public void MarkAsDiscovered(int x, int y, bool isTransparent, bool isWalkable)
+        {
+            this.tileData.SetCellProperties(x, y, isTransparent, isWalkable, true);
+            
+        }
     }
 }
