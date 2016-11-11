@@ -24,7 +24,7 @@ namespace DeenGames.AdventureRL.UI.SadConsoleMonogame
         public void Run()
         {
             // Setup the engine and creat the main window.
-            SadConsole.Engine.Initialize("IBM.font", Config.GameWidth, Config.GameHeight);
+            SadConsole.Engine.Initialize("Assets/Fonts/IBM.font", Config.GameWidth, Config.GameHeight);
 
             // Hook the start event so we can add consoles to the system.
             SadConsole.Engine.EngineStart += (sender, eventArgs) =>

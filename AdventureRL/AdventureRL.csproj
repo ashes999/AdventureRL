@@ -37,9 +37,9 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="C64.font" />
-    <None Include="Cheepicus12.font" />
-    <None Include="IBM.font">
+    <None Include="Assets\Fonts\C64.font" />
+    <None Include="Assets\Fonts\Cheepicus12.font" />
+    <None Include="Assets\Fonts\IBM.font">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -80,11 +80,11 @@
     <Compile Include="Screens\AreaScreen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cheepicus_12x12.png" />
-    <Content Include="IBM8x16.png">
+    <Content Include="Assets\Fonts\Cheepicus_12x12.png" />
+    <Content Include="Assets\Fonts\IBM8x16.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Yayo_c64.png" />
+    <Content Include="Assets\Fonts\Yayo_c64.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdventureRL.Core\AdventureRL.Core.csproj">
